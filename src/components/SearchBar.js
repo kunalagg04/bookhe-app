@@ -1,10 +1,10 @@
 import React from 'react';
-import { TextInput , View } from 'react-native';
+import { TextInput , View ,StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 
 const SearchBar = ({ term, onTermChange, onTermSubmit }) =>{
     return(
-        <View style={styles.backgroundStyles}>
+        <View style={styles.backgroundStyle}>
             < Ionicons
                 name="md-search"
                 style={styles.iconStyle} />
