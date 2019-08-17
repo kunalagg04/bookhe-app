@@ -9,11 +9,11 @@ const SearchScreen = () =>{
     const [results, setResults] = useState([]);
     const[errorMessage , setErrorMessage]=useState('');
 
-    const searchApi = async () => {
+    const searchApi = async (searchTerm) => {
        try{ const response = await yelp.get('/search',{
             params : {
                 limit : 50,
-                term : term,
+                term : searchTerm,
                 location : Ghaziabad
             }
         });
@@ -25,14 +25,17 @@ const SearchScreen = () =>{
     }
     }
 
+    useEffect(() => {
+        searchApi('pasta');
+    } , []);
 
     return(
         <View>
             {errorMessage?<Text>{errorMessage}</Text>:null}
             <SearchBar 
                term={term}
-               onTermChange={newTerm => setTerm(newTerm)}
-               onTermSubmit={() => searchApi()}/>
+               onTermChange={newTerm => setTerm(term)}
+               onTermSubmit={() => searchApi(searchTerm)}/>
         </View>
     )
 }
